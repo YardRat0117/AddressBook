@@ -8,8 +8,13 @@ AddressBook::AddressBook(){
 
 // show all contacts
 void AddressBook::showAllContacts() const {
-    for(int index = 0;index < size;index++){
-        contactArray[index].show();
+    if(size == 0){
+        std::cout << "No contact stored currently.\n";
+    }
+    else{
+        for(int index = 0;index < size;index++){
+         contactArray[index].show();
+        }
     }
 }
 
