@@ -33,8 +33,18 @@ void AddressBook::appendContact(){
 
 // delete existing contact
 void AddressBook::deleteContact(){
-    contactArray[size - 1].init();
-    size -= 1;
+    searchName();
+    std::cout << "Are you sure to delete the contact? If so, please type the contact's id; if not, please type the number 0. \n";
+    int target = false;
+    std::cin >> target;
+    if(target){
+        contactArray[target - 1].copy(contactArray[size - 1]);
+        size -= 1;
+        std::cout << "Successfully deleted! \n";
+    }
+    else{
+        std::cout << "Failed to delete! \n";
+    }
 }
 
 // search contact by name

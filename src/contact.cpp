@@ -49,3 +49,10 @@ void contact::show() const {
         std::cout << "Contact phone number: " << phoneNumber << "\n";
         std::cout << "Contact email: " << email << "\n";
 }
+
+// copy existing contact
+void contact::copy(const contact& target) {
+    name = target.requestName();
+    phoneNumber = target.requestPhoneNumber();
+    email = target.requestPhoneNumber();
+}

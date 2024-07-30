@@ -28,6 +28,9 @@ class contact{
         // show contact page
         void show() const;
 
+        // copy existing contact
+        void copy(const contact& target); 
+
     private:
         // properties
         std::string name;
