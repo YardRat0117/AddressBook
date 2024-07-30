@@ -1,21 +1,11 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 
-#include"contact.h"
-#include"AddressBook.h"
+#include "Contact.h"
+#include "AddressBook.h"
+#include "BookOperator.h"
 
 using namespace std;
-
-void showMenu() {
-    std::cout << "========== Address Book Menu ==========\n";
-    std::cout << "1. Show all contacts\n";
-    std::cout << "2. Add new contact\n";
-    std::cout << "3. Delete existing contact\n";
-    std::cout << "4. Search contact by name\n";
-    std::cout << "5. Exit\n";
-    std::cout << "========================================\n";
-    std::cout << "Please enter your choice: ";
-}
 
 int main(){
     AddressBook ab;

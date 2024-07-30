@@ -1,41 +1,39 @@
-#ifndef CONTACT_H
-#define CONTACT_H
-
+#pragma once
 #include<string>
 
-class contact{
+/*
+20240730 UPDATE LOG
+removed the display function and the revise function. 
+class function: store
+*/
+
+class Contact{
     public:
-        // unique id for each contact
-        int id;
+        // merged constructor function
+        Contact(
+            const std::string& newName, 
+            const std::string& newPhone, 
+            const std::string& newEmail
+        );
+
+        // get property values
+        std::string getName() const;
+        std::string getPhone() const;
+        std::string getEmail() const;
+
+        // set property values
+        void setName(const std::string& newName);
+        void setPhone(const std::string& newPhone);
+        void setEmail(const std::string& newEmail);
+
+        // check whether the given keyword matchs the contact
+        bool isMatch(const std::string& keyword) const; 
         
-        // default constructor function
-        contact();
-        
-        // initialization
-        void init();
-
-        // request for property values
-        std::string requestName() const;
-        std::string requestPhoneNumber() const;
-        std::string requestEmail() const;
-
-        // revise property values
-        void reviseName(const std::string& n);
-        void revisePhoneNumber(const std::string& p);
-        void reviseEmail(const std::string& e);
-        void revise(const int i, const std::string& n, const std::string& p, const std::string& e);
-
-        // show contact page
-        void show() const;
-
-        // copy existing contact
-        void copy(const contact& target); 
-
+        // display the contact
+        void display() const;
     private:
         // properties
         std::string name;
-        std::string phoneNumber;
+        std::string phone;
         std::string email;
 };
-
-#endif

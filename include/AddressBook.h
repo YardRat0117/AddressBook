@@ -1,36 +1,29 @@
-#ifndef ADDRESSBOOK_H
-#define ADDRESSBOOK_H
-
-#define MAX_CAPACITY 1000
-
+#pragma once
 #include "contact.h"
-#include <iostream>
-#include <string>
+#include <vector>
+
+/*
+20240730 UPDATE LOG
+introduced vector (with the help of ChatGPT)
+removed the revise function
+class function: manage and transmit 
+*/
 
 class AddressBook{
     public:
-        // default constractor function
-        AddressBook();
-
-        // show all contacts
-        void showAllContacts() const;
-        
         // add new contact
-        void appendContact();
+        void addContact(const Contact& newContact);       
         
-        // delete existing contact
-        void deleteContact();
+        // search existing contact
+        std::vector<Contact>::iterator searchContact(const std::string& keyword){};
+        
+        // remove existing contact
+        bool removeContact(const std::string& targetName);
 
-        // search contact by name
-        void searchName();
+        // display all contacts
+        const Contact* displayAllContacts() const;
 
     private:
-        // array of contacts to store data
-        contact contactArray[MAX_CAPACITY];
-
-        // number of contacts stored
-        int size;
+        std::vector<Contact> contacts; 
 
 };
-
-#endif

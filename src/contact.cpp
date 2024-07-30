@@ -1,58 +1,44 @@
 #include "contact.h"
 #include <iostream>
 
-// default constructor function
-contact::contact(){
-    contact:init();
-}
+// merged constructor function
+Contact::Contact(
+    const std::string& newName = "", 
+    const std::string& newPhone = "", 
+    const std::string& newEmail = ""
+    ) : name(newName), phone = (newPhone), email(newEmail) {}
 
-// initialization
-void contact::init() {
-    id = -1;
-    name = "";
-    phoneNumber = "";
-    email = "";
-}
 
-// request for property values
-std::string contact::requestName() const {
+// get for property values
+std::string Contact::getName() const {
     return name;
 }
-std::string contact::requestPhoneNumber() const {
-    return phoneNumber;
+std::string Contact::getPhoneNumber() const {
+    return phone;
 }
-std::string contact::requestEmail() const {
+std::string Contact::getEmail() const {
     return email;
 }
 
-//revise property values
-void contact::reviseName(const std::string& n){
-    name = n;
+//set property values
+void Contact::setName(const std::string& newName){
+    name = newName;
 }
-void contact::revisePhoneNumber(const std::string& p){
-    phoneNumber = p;
+void Contact::setPhoneNumber(const std::string& newPhone){
+    phone = newPhone;
 }
-void contact::reviseEmail(const std::string& e){
-    email = e;
-}
-void contact::revise(const int i,const std::string& n,const std::string& p,const std::string& e){
-    id = i;
-    name = n;
-    phoneNumber = p;
-    email = e;
+void Contact::setEmail(const std::string& newEmail){
+    email = newEmail;
 }
 
-// show contact page
-void contact::show() const {
-        std::cout << "Contact id: " << id << "\n";
-        std::cout << "Contact name: " << name << "\n";
-        std::cout << "Contact phone number: " << phoneNumber << "\n";
-        std::cout << "Contact email: " << email << "\n";
+// check whether the given keyword matchs the contact
+bool isMatch(const std::string& keyword) const{
+    return (Contact::getName == keyword) or (Contact::getPhone == keyword) or (Contact::getEmail == keyword);
 }
 
-// copy existing contact
-void contact::copy(const contact& target) {
-    name = target.requestName();
-    phoneNumber = target.requestPhoneNumber();
-    email = target.requestPhoneNumber();
+// display the contact
+void display() const {
+    std::cout << "Contact name: " << Contact::getName() << "\n";
+    std::cout << "Contact phone: " << Contact::getPhone() << "\n";
+    std::cout << "Contact email: " << Contact::getEmail() << "\n";
 }
