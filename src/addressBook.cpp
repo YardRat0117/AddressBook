@@ -4,34 +4,43 @@
 
 // add new contact
 void AddressBook::addContact(const Contact& newContact){
-    contacts.push_back(newContact);
-    std::cout << "Successfully added the new contact: " << newContact.getName() << "\n";
+    Contacts.push_back(newContact);
 }
 
-// search existing contact
-std::vector<Contact>::iterator AddressBook::searchContact(const std::string& keyword){
+// search existing contact and return iterator
+std::vector<Contact>::iterator AddressBook::findContact(const std::string& keyword){
     return std::find_if(
         Contacts.begin(), 
         Contacts.end(), 
-        [&keyword](const Contact& item){item.isMatch(keyword)}
-    )
+        [&keyword](const Contact& item){return item.isMatch(keyword);}
+    );
+}
+
+// search existing contact and return address
+Contact* AddressBook::getContact(const std::string& keyword){
+    Contact* result = nullptr;
+    auto findResult = findContact(keyword);
+    if(findResult != Contacts.end()){
+        result = &(*findResult);
+    }
+    return result;
 }
 
 // remove existing contact
 bool AddressBook::removeContact(const std::string& targetName){
     bool isRemoved = false;
-    target = searchContact(targetName);
+    auto target = findContact(targetName);
     if(target != Contacts.end()){
-        target.erase();
+        Contacts.erase(target);
         isRemoved = true;
     }
     return isRemoved;
 }
 
 // display all contacts
-const Contact* displayAllContacts() const {
+void AddressBook::displayAllContacts() const {
     for(
-        std::vector<Contact>::iterator iter = Contacts.begin(); 
+        auto iter = Contacts.begin();
         iter != Contacts.end();
         ++iter
     )  {

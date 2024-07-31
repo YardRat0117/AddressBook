@@ -6,39 +6,27 @@ Contact::Contact(
     const std::string& newName = "", 
     const std::string& newPhone = "", 
     const std::string& newEmail = ""
-    ) : name(newName), phone = (newPhone), email(newEmail) {}
+    ) : name(newName), phone(newPhone), email(newEmail) {}
 
 
 // get for property values
-std::string Contact::getName() const {
-    return name;
-}
-std::string Contact::getPhoneNumber() const {
-    return phone;
-}
-std::string Contact::getEmail() const {
-    return email;
-}
+std::string Contact::getName() const {return name;}
+std::string Contact::getPhone() const {return phone;}
+std::string Contact::getEmail() const {return email;}
 
 //set property values
-void Contact::setName(const std::string& newName){
-    name = newName;
-}
-void Contact::setPhoneNumber(const std::string& newPhone){
-    phone = newPhone;
-}
-void Contact::setEmail(const std::string& newEmail){
-    email = newEmail;
-}
+void Contact::setName(const std::string& newName){name = newName;}
+void Contact::setPhone(const std::string& newPhone){phone = newPhone;}
+void Contact::setEmail(const std::string& newEmail){email = newEmail;}
 
 // check whether the given keyword matchs the contact
-bool isMatch(const std::string& keyword) const{
-    return (Contact::getName == keyword) or (Contact::getPhone == keyword) or (Contact::getEmail == keyword);
+bool Contact::isMatch(const std::string& keyword) const {
+    return (this->getName() == keyword) || (this->getPhone() == keyword) || (this->getEmail() == keyword);
 }
 
 // display the contact
-void display() const {
-    std::cout << "Contact name: " << Contact::getName() << "\n";
-    std::cout << "Contact phone: " << Contact::getPhone() << "\n";
-    std::cout << "Contact email: " << Contact::getEmail() << "\n";
+void Contact::display() const {
+    std::cout << "Contact name: " << this->getName() << "\n";
+    std::cout << "Contact phone: " << this->getPhone() << "\n";
+    std::cout << "Contact email: " << this->getEmail() << "\n";
 }

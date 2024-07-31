@@ -31,6 +31,7 @@ class Contact{
         
         // display the contact
         void display() const;
+        
     private:
         // properties
         std::string name;

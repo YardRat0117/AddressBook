@@ -14,16 +14,19 @@ class AddressBook{
         // add new contact
         void addContact(const Contact& newContact);       
         
-        // search existing contact
-        std::vector<Contact>::iterator searchContact(const std::string& keyword){};
+        // search existing contact and return iterator
+        std::vector<Contact>::iterator findContact(const std::string& keyword);
         
+        // search existing contact and return address
+        Contact* getContact(const std::string& keyword);
+
         // remove existing contact
         bool removeContact(const std::string& targetName);
 
         // display all contacts
-        const Contact* displayAllContacts() const;
+        void displayAllContacts() const;
 
     private:
-        std::vector<Contact> contacts; 
+        std::vector<Contact> Contacts; 
 
 };
